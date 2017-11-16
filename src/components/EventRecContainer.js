@@ -7,14 +7,14 @@ class EventRecContainer extends React.Component {
 
   render(){
     let formattedEventRecs = this.props.eventRecs.map((eventRec) => {
-
+      console.log(this.props)
       if (eventRec.travel_spot_id === this.props.id){
         return <EventRec data={eventRec} key={eventRec.id}/>
       }
     })
 
     return(
-      <div className="kevin">
+      <div>
         {formattedEventRecs}
       </div>
     )

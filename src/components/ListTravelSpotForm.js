@@ -31,8 +31,6 @@ class ListTravelSpotForm extends React.Component{
       continent: ""
     })
 
-    this.props.getAllTravelSpots()
-
   }
 
   render(){

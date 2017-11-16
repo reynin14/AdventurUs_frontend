@@ -29,7 +29,7 @@ import welcomeSign from './images/welcomeSign.png'
 import travelSpotsBackground from './images/travelSpotsBackground.jpg'
 import addTravelSpotsBackground from './images/addTravelSpotsBackground.jpg'
 import touristPic from './images/touristPic.jpg'
-import nightPic from './images/nightPic.jpeg'
+import nightPic from './images/city_night_pic.jpg'
 
 
 
@@ -243,9 +243,20 @@ class App extends Component {
               <Parallax.Layer
                 offset={3}
                 speed={0.5}
-                style={styles}
+                style={{
+                  fontFamily: 'Menlo-Regular, Menlo, monospace',
+                  fontSize: 14,
+                  lineHeight: '10px',
+                  color: 'black',
+                  display: 'flex',
+                  top: '250px',
+                  padding: '50px',
+                  justifyContent: 'flex-start',
+                  flexWrap: 'wrap',
+                  left: '300px'
+                }}
               >
-                {this.props.usersSpotsLoaded ? <DisplayUsersTravelSpots/> : null}
+                {this.props.usersSpotsLoaded ? <DisplayUsersTravelSpots /> : null}
               </Parallax.Layer>
 
               <Parallax.Layer

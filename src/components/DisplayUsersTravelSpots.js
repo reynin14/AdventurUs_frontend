@@ -24,15 +24,8 @@ class DisplayUsersTravelSpots extends React.Component{
 
     return(
       <div>
-        <Grid>
-          <Grid.Row>
-            <h1>My Adventures</h1>
-          </Grid.Row>
-          <Grid.Row>
-            {travelSpots}
-          </Grid.Row>
-
-        </Grid>
+        <h1>My Adventures</h1><br></br>
+        {travelSpots}
       </div>
     )
   }

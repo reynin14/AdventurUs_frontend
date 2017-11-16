@@ -7,11 +7,16 @@ import SightRecsForm from './SightRecsForm'
 import EventRec from './EventRec'
 import { connect } from 'react-redux';
 import { loadCurrentTravelSpotEventRecs } from '../actions/eventRecs'
+import { deleteTravelSpot } from '../actions/travelspots'
 import EventRecContainer from './EventRecContainer'
 import '../App.css'
 
 
 class TravelSpot extends React.Component{
+
+  handleDelete = () => {
+    this.props.deleteTravelSpot(this.props.id)
+  }
 
   componentWillMount(){
     this.props.loadCurrentTravelSpotEventRecs(this.props.data.event_recs)
@@ -20,6 +25,8 @@ class TravelSpot extends React.Component{
   render(){
 
     let currentTravelSpotId = this.props.id
+
+
 
     // const myBigGreenDialog = {
     //   backgroundColor: 'black',
@@ -53,9 +60,9 @@ class TravelSpot extends React.Component{
     //   </Card>
     // </div>
 
-    // let eventRecs = this.props.data.event_recs.map((event_rec) => {
-    //   return <EventRec data={event_rec}/>
-    // })
+    let eventRecs = this.props.data.event_recs.map((event_rec) => {
+      return <EventRec data={event_rec}/>
+    })
 
     let foodRecs = this.props.data.food_recs.map((food_rec) => {
       return <div key={food_rec.id}>
@@ -158,7 +165,7 @@ class TravelSpot extends React.Component{
                       />
                   </Grid.Column>
                   <Grid.Column width={12}>
-                    <div>{this.props.eventRecsLoaded ? <EventRecContainer id={currentTravelSpotId}/> : null}</div>
+                    {this.props.eventRecsLoaded ? <EventRecContainer id={this.props.id}/> : null}
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
@@ -216,6 +223,7 @@ class TravelSpot extends React.Component{
 
             </Modal.Description>
           </Modal.Content>
+          <Button onClick={this.handleDelete} color='red' size='small' floated='right'>Delete this Adventure</Button>
         </Modal>
       </div>
     )
@@ -229,7 +237,7 @@ let mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps, { loadCurrentTravelSpotEventRecs })(TravelSpot)
+export default connect(mapStateToProps, { loadCurrentTravelSpotEventRecs, deleteTravelSpot })(TravelSpot)
 
 // <Grid celled>
 //   <Grid.Row>

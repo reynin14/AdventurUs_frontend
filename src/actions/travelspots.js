@@ -69,3 +69,19 @@ export function addAccommodationRec (payload){
       })
   }
 }
+
+export function deleteTravelSpot (id){
+  return function(dispatch){
+    fetch(`http://localhost:3002/travelspot/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept':'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `bearer ${localStorage.getItem('token')}`
+      },
+    })
+      .then(
+        dispatch({type: 'DELETE_TRAVELSPOT', id: id})
+      )
+  }
+}

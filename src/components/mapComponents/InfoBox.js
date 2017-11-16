@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Header, Icon, Image, Modal, Card, Grid } from 'semantic-ui-react'
+import { Button, Header, Modal, Card, Grid } from 'semantic-ui-react'
 
 const InfoBox = (props) =>{
 
@@ -100,37 +100,46 @@ const InfoBox = (props) =>{
           <Modal.Content image scrolling>
             <Modal.Description>
 
-              <Grid>
+              <Grid celled>
                 <Grid.Row>
                   <Grid.Column width={4}>
                     <Header>Event Recommendations</Header>
+                  </Grid.Column>
+                  <Grid.Column width={12}>
                     {eventRecs}
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
 
-              <Grid>
+              <Grid celled>
                 <Grid.Row>
                   <Grid.Column width={4}>
                     <Header>Food Recommendations</Header>
+                  </Grid.Column>
+                  <Grid.Column width={12}>
                     {foodRecs}
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
 
-              <Grid>
+              <Grid celled>
                 <Grid.Row>
                   <Grid.Column width={4}>
                     <Header>Sight Recommendations</Header>
+
+                  </Grid.Column>
+                  <Grid.Column width={12}>
                     {sightRecs}
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
 
-              <Grid>
+              <Grid celled>
                 <Grid.Row>
                   <Grid.Column width={4}>
                     <Header>Accommodation Recommendations</Header>
+                  </Grid.Column>
+                  <Grid.Column width={12}>
                     {accommodationRecs}
                   </Grid.Column>
                 </Grid.Row>
