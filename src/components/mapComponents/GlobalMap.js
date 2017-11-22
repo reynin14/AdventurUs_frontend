@@ -68,11 +68,19 @@ class GlobalMap extends Component {
 
   render() {
 
-    let markerList = this.props.travelSpots.map((travelSpot) => {
-      return (
-        <Marker data={travelSpot} lat={travelSpot.latitude} lng={travelSpot.longitude} key={travelSpot.id}/>
+    let markerList
+
+    if (localStorage.getItem('token') && this.props.loadedAllTravelSpots){
+      markerList = (
+        this.props.travelSpots.map((travelSpot) => {
+          return (
+            <Marker data={travelSpot} lat={travelSpot.latitude} lng={travelSpot.longitude} key={travelSpot.id}/>
+          )}
+        )
       )
-    })
+    } else {
+      markerList = null
+    }
 
     const mapOptions = {
       styles: [
@@ -194,6 +202,7 @@ class GlobalMap extends Component {
       >
 
         {markerList}
+
         { this.state.displayInfoBox ? <InfoBox data={this.state.infoBoxData} lat={this.state.infoBoxLat} lng={this.state.infoBoxLng}/> : null}
 
       </GoogleMapReact>
@@ -203,7 +212,9 @@ class GlobalMap extends Component {
 
 const mapStateToProps = (state) => {
   return ({
-    travelSpots: state.travelSpotReducer.allTravelSpots
+    travelSpots: state.travelSpotReducer.allTravelSpots,
+    currentUser: state.userReducer.currentUser,
+    loadedAllTravelSpots: state.travelSpotReducer.loadedAllTravelSpots
   })
 }
 

@@ -9,14 +9,19 @@ class DisplayUsersTravelSpots extends React.Component{
   grabUsersTravelSpots = () => {
     let userTravelSpots = this.props.usersTravelSpots
 
-    let mappedTravelSpots = userTravelSpots.map((travelspot, index) => {
-      return (
-        <TravelSpot data={travelspot} key={travelspot.id} id={travelspot.id}/>
-      )
-    })
+      if (this.props.currentUser){
+        return null
+      } else {
+        let mappedTravelSpots = userTravelSpots.map((travelspot, index) => {
+          return (
+            <TravelSpot data={travelspot} key={travelspot.id} id={travelspot.id}/>
+          )
+        })
 
-    return mappedTravelSpots
+        return mappedTravelSpots
+      }
   }
+
 
 
   render(){
@@ -35,7 +40,8 @@ let mapStateToProps = (state) => {
 
   return ({
     usersTravelSpots: state.travelSpotReducer.usersTravelSpots,
-    loadedUsersSpots: state.travelSpotReducer.loadedUsersSpots
+    loadedUsersSpots: state.travelSpotReducer.loadedUsersSpots,
+    currentUser: state.userReducer.currentUser
   })
 }
 

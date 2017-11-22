@@ -144,7 +144,7 @@ class App extends Component {
               <Button icon='edit' content='Edit' onClick={() => {this.refs.parallax.scrollTo(3)}} />
               <Button icon='add circle' content='Add New' onClick={() => {this.refs.parallax.scrollTo(4)}} />
 
-              {localStorage.getItem('token') ? <Button icon='sign out' content='Logout' /> : null}
+              {localStorage.getItem('token') ? <Button onClick={this.handleLogout} icon='sign out' content='Logout' /> : null}
             </Button.Group>
 
           </Menu>
@@ -201,7 +201,7 @@ class App extends Component {
 
 
               <Parallax.Layer
-                offset={0}
+                offset={1}
                 speed={-1}
                 style={{
                   fontFamily: 'Menlo-Regular, Menlo, monospace',
@@ -256,7 +256,7 @@ class App extends Component {
                   left: '300px'
                 }}
               >
-                {this.props.usersSpotsLoaded ? <DisplayUsersTravelSpots /> : null}
+                {this.props.usersSpotsLoaded && localStorage.getItem('token') ? <DisplayUsersTravelSpots /> : null}
               </Parallax.Layer>
 
               <Parallax.Layer
@@ -269,7 +269,7 @@ class App extends Component {
                   <Grid.Column>
                   </Grid.Column>
                   <Grid.Column>
-                    <ListTravelSpotForm />
+                    {localStorage.getItem('token') ? <ListTravelSpotForm /> : null}
                   </Grid.Column>
                 </Grid>
 

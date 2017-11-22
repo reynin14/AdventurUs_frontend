@@ -22,7 +22,6 @@ export default function eventReducer(state = {
           return eventRec
         }
       })
-
       return {...state, eventRecs: updatedArray}
     default:
       return state

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setUser } from '../actions/users'
+import {getUsersTravelSpots} from '../actions/travelspots'
 import { Form, Button } from 'semantic-ui-react'
 
 
@@ -16,6 +17,7 @@ class Login extends React.Component{
     let currentUsername = this.state.username
     let password = this.state.password
     this.props.setUser(currentUsername, password)
+
   }
 
   render(){
@@ -47,4 +49,4 @@ function mapStateToProps(state){
 }
 
 
-export default connect(mapStateToProps, { setUser })(Login)
+export default connect(mapStateToProps, { setUser, getUsersTravelSpots })(Login)
